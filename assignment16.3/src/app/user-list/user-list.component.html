@@ -1,0 +1,32 @@
+<div>
+  <div class="form-group">
+    <input type="text" name="search" class="form-control" placeholder="Search" [(ngModel)]="searchData">
+  </div>
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>LastName</th>
+          <th>Age</th>
+          <th>Gender</th>
+          <th>Date</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of (arrayList | async | searchBy : searchData); let i = index" [@userState]='stateExpression' (mouseenter)="mouseEnter()"
+          (mouseleave)="mouseLeave()" [@flyInOut]="in" (@flyInOut.start)="animationStarted($event)" (@flyInOut.done)="animationDone($event)">
+          <td [routerLink]="['/userDetail', i + 1]">{{item.name | capitalize}}</td>
+          <td>{{item.lastName}}</td>
+          <td>{{item.age}}</td>
+          <td>{{item.gender | uppercase}}</td>
+          <td>{{item.date | date : 'shortDate'}}</td>
+          <td (click)="deleteData(i)">
+            <i class="fa fa-times" aria-hidden="true"></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

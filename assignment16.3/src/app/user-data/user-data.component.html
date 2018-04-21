@@ -1,0 +1,28 @@
+<div class="form-group">
+  <div class="col-sm-10">
+    <form #f="ngForm" (ngSubmit)="submit(f.value)">
+      <div class="form-group">
+        <input type="text" name="name" class="form-control" [(ngModel)]="userDetail.name" placeholder='FirstName' #refName>
+      </div>
+      <div class="form-group">
+        <input type="text" name="lastName" class="form-control" [(ngModel)]="userDetail.lastName" placeholder='LastName' #refLastName>
+      </div>
+      <div class="form-group">
+        <input type="text" name="age" class="form-control" [(ngModel)]="userDetail.age" placeholder='Age' #refagev>
+      </div>
+      <div class="form-group">
+        <input type="date" name="date" class="form-control" [(ngModel)]="userDetail.date" #refage>
+      </div>
+      <div class="form-group">
+        <select class="txt-box" name="gender" [(ngModel)]="userDetail.genderType" class="form-control" #refGender>
+          <option [value]="userDetail.genderType" [disabled]="true">Select Option </option>
+            <option *ngFor="let gender of genderArray" [ngValue]="gender.value">
+            {{gender.value}}
+            </option>
+      </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+  </div>
+</div>
